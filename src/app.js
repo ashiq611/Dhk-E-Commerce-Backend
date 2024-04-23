@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const createError = require("http-errors");
 const xssClean = require("xss-clean");
 const rateLimit = require("express-rate-limit");
-const UserRouter = require("./routers/useRouter");
+const UserRouter = require("./routers/userRouter");
+const SeedRouter = require("./routers/seedRouter");
 
 
 
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use("/api/users", UserRouter);
+app.use("/api/seed", SeedRouter);
 
 app.get("/test", (req, res) => {
   res.status(200).send({
